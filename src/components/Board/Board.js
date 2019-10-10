@@ -27,7 +27,7 @@ class Board extends Component {
 
         this.checkWinner = this.checkWinner.bind(this)
         this.huPlayerIndexies = this.huPlayerIndexies.bind(this)
-
+        this.aiIndexes = this.aiIndexes.bind(this)
     }
 
     checkWinner() {
@@ -60,9 +60,33 @@ class Board extends Component {
     aiAction() {
         const availSpot = this.emptyIndexies()
         const checkWinlines = this.state.winLines
+        const aiIndexes = this.aiIndexes()
         const opponentIndexes = this.huPlayerIndexies()
         let res = []
         let coverIndex = null
+
+        
+        // check to see if there's a winning opportunity
+        // get win lines
+        checkWinlines.map((value, key) => {
+            let intersept = _.intersection(value, aiIndexes)
+            console.log(intersept)
+            if (intersept.length == 2) {
+                let j = _.difference(value, intersept);
+
+                if (this.state.board[j[0]] === null) {
+                    coverIndex = j[0]
+                }
+
+            }
+        })
+
+        if (coverIndex) {
+            return coverIndex
+        }
+
+        // if intersept == 2 and they are all aiIndexes
+        // set coverIndex
         checkWinlines.map((value, key) => {
             let intersept = _.intersection(value, opponentIndexes)
             console.log(intersept)
@@ -81,6 +105,19 @@ class Board extends Component {
         }
 
         checkWinlines.map((value, key) => {
+            let intersept = _.intersection(value, availSpot)
+            console.log(intersept)
+            if (intersept.length == 2) {
+                let j = _.difference(value, intersept)
+
+                if (this.state.board[j[0]] === null) {
+                    coverIndex = j[0]
+                }
+
+            }
+        })
+
+        checkWinlines.map((value, key) => {
             let d = _.intersection(value, availSpot)
 
             if (d && !_.isEmpty(_.difference(value, d))) {
@@ -91,6 +128,18 @@ class Board extends Component {
         let mostSpot = _.flattenDeep(res)
         let uniq = _.uniq(mostSpot)
         let availtoSpot = uniq
+
+        const center = 4
+        if (availtoSpot.includes(center)) {
+            return center
+        }
+
+        const diagonals = [0, 2, 6, 8]
+        const availDiagonals = _.intersection(diagonals, availSpot)
+
+        if (!availtoSpot.includes(center) && availDiagonals.length) {
+            return availDiagonals[0];
+        }
 
         let rand = availtoSpot[Math.floor(Math.random() * availtoSpot.length)]
 
@@ -153,6 +202,18 @@ class Board extends Component {
         let fills = []
         let iterator = _.filter(this.state.board, function (value, key) {
             if (value === 'O') {
+                fills.push(key)
+            }
+        })
+
+        return fills;
+    }
+
+    aiIndexes = () => {
+
+        let fills = []
+        let iterator = _.filter(this.state.board, function (value, key) {
+            if (value === 'X') {
                 fills.push(key)
             }
         })
