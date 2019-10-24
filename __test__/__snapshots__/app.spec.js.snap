@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SAMPLE TEST should render header without crashing 1`] = `
+<div
+  className="App"
+>
+  <h2>
+    Tic Tac Toe
+  </h2>
+  <Board />
+</div>
+`;
+
+exports[`SAMPLE TEST should render the App component correctly 1`] = `
+<App>
+  <div
+    className="App"
+  >
+    <h2>
+      Tic Tac Toe
+    </h2>
+    <Board>
+      <div
+        className="board"
+        style={
+          Object {
+            "margin": "10px auto",
+            "width": "400px",
+          }
+        }
+      >
+        <div
+          className="board-wrapper"
+        >
+          <div
+            className="col box"
+            key="0"
+            onClick={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="col box"
+            key="1"
+            onClick={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="col box"
+            key="2"
+            onClick={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="col box"
+            key="3"
+            onClick={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="col box"
+            key="4"
+            onClick={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="col box"
+            key="5"
+            onClick={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="col box"
+            key="6"
+            onClick={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="col box"
+            key="7"
+            onClick={[Function]}
+            style={Object {}}
+          />
+          <div
+            className="col box"
+            key="8"
+            onClick={[Function]}
+            style={Object {}}
+          />
+        </div>
+        <button
+          className="btn"
+          onClick={[Function]}
+          type="button"
+        >
+          Reset
+        </button>
+        <h3
+          className="feedback"
+        >
+          Enjoy the game! Any feedback? Kindly drop a feedback mail at ezikeonyinyefavour@gmail.com, Thank you!
+        </h3>
+      </div>
+    </Board>
+  </div>
+</App>
+`;
