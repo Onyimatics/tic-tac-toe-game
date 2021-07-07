@@ -1,4 +1,4 @@
-.container {
+.App {
   background: radial-gradient(circle, #000, #000);
   background: -webkit-radial-gradient(circle, #f44, #000);
   min-height: 100vh;
